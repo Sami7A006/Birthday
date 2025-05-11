@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laasya's Birthday Countdown</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="header finisher-header"></div>
+
+  <div class="content">
+    <section class="Laasya">
+      <h1>Laasya</h1>
+      <h3>You sound just like "Blue - yung kai"</h3>
+
+      <!-- Timer Section -->
+      <div class="timer-container">
+        <p id="birthday-timer-laasya"></p>
+      </div>
+
+      <!-- Media Section -->
+      <div class="media-container">
+        <div class="video-container">
+          <video class="birthday-video" muted autoplay loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <a href="manish.html" class="birthday-button">Check Manish's Birthday</a>
+    <a href="sami.html" class="birthday-button">Sami's OnlyFans</a>
+  </div>
+
+  <script src="finisher-header.es5.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    new FinisherHeader({
+      "count": 19,
+      "size": { "min": 2, "max": 40, "pulse": 0 },
+      "speed": {
+        "x": { "min": 0, "max": 0.8 },
+        "y": { "min": 0, "max": 0.2 }
+      },
+      "colors": {
+        "background": "#15182e",
+        "particles": ["#ff926b", "#87ddfe", "#acaaff", "#1bffc2", "#f9a5fe"]
+      },
+      "blending": "screen",
+      "opacity": {
+        "center": 0.7,
+        "edge": 1
+      },
+      "skew": -1,
+      "shapes": ["c", "s", "t"]
+    });
+  </script>
+
+  <script>
+    function updateBirthdayTimer() {
+      const now = new Date();
+      let year = now.getFullYear();
+      let nextBirthday = new Date(year, 6, 15); // Laasya's birthday on July 15
+      if (now > nextBirthday) {
+        nextBirthday = new Date(year + 1, 6, 15); // Next year if the birthday already passed
+      }
+      const diff = nextBirthday - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById('birthday-timer-laasya').textContent =
+        `Birthday in ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateBirthdayTimer();
+      setInterval(updateBirthdayTimer, 1000);
+    });
+  </script>
+
+</body>
+</html>
